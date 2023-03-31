@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
+.note_list {
+    height: auto;
+    width: 100px;
+    border: 2px solid black;
+    text-align: center;
+}
+
+.saved_note {
+    height: auto;
+    width: auto;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.saved_note:hover {
+    background: rgb(134, 206, 251);
+}
+
+#content {
+    width: 100%;
+    height: 200px;
+}
+
+.btn {
+    cursor: pointer;
+}
