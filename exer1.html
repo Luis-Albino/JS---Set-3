@@ -5,17 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./exer1.css">
+    <link rel="stylesheet" href="./set3.css">
 </head>
 <body>
     <!-- HOME PAGE -->
     <template id="homePageTemplate">
         <div>
             <div id="note_list">
-                <div id="note_list_header">My notes</div>
+                <div id="note_list_header">
+                    <span>My notes</span>
+                    <input type="text" id="search" name="search" placeholder="Search">
+                </div>
+
+                <div id="note_list_container"></div>
             </div>
             <br>
             <button type="button" id="new_note" class="btn">New Note</button>
+            <br>
+            <br>
+            <!-- undo/redo -->
+            <button type="button" id="undo" class="btn undo">undo</button>
+            <button type="button" id="redo" class="btn redo">redo</button>
         </div>
     </template>
 
@@ -45,17 +55,25 @@
 
             <!-- Last modified -->
             <span id="lastModified"></span>
-
-            <br><br>
+            
+            <br>
+            <br>
 
             <!-- Buttons -->
             <button type="button" id="go_back" class="btn">« go back</button>
             <button type="button" id="save" class="btn">Save</button>
             <button type="button" id="delete" class="btn">Delete</button>
+
+            <br>
+            <br>
+
+            <!-- undo/redo -->
+            <button type="button" id="undoNote" class="btn undo">undo</button>
+            <button type="button" id="redoNote" class="btn redo">redo</button>
         </form>
     </template>
 
-    <script type="module" src="./exer1.js"></script>
+    <script type="module" src="./set3.js"></script>
     
 </body>
 </html>
