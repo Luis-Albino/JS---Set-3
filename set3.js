@@ -62,6 +62,12 @@ NoteFactory.prototype.writeNote = function (noteName,noteContent) {
 
 var simpleNoteFactory = new NoteFactory();
 
+// // Create test notes //
+// for (let i=0; i<100; i++) {
+//     repositorium[i] = simpleNoteFactory.writeNote(i,i);
+//     repositorium.storeAtRepo(repositorium)
+// }
+
 
 //////////////////////////////
 // Utility: remove template //
@@ -103,9 +109,9 @@ function homePage () {
             }
         })();
     }
-    else {
-        noteList.style.display = "none";
-    };
+    // else {
+    //     noteList.style.display = "none";
+    // };
 
     /* Button Events */
     document.getElementById("new_note").addEventListener("click",function () { notePage() })
@@ -159,7 +165,7 @@ function notePage (noteName) {
 function saveNote (noteName) {
     let titleInput = document.getElementById("title");
     // Checks title validity //
-    if (!!(titleInput.value)) {
+    if (titleInput.value) {
         let availableTitle = true;
         // Checks title availability (for new notes) //
         if (!noteName) {
@@ -178,6 +184,11 @@ function saveNote (noteName) {
                 // Store At Repositorium //
                 repositorium[noteTitle] = simpleNoteFactory.writeNote(noteTitle,noteContent);
                 repositorium.storeAtRepo(repositorium)
+                if (noteTitle != noteName) {
+                    // Delete Note with old name From Repositorium //
+                    delete repositorium[noteName];
+                    repositorium.storeAtRepo(repositorium);
+                }
             })();
 
             let creationDate = document.getElementById("creationcreationDate");
