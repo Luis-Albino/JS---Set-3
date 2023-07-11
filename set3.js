@@ -75,8 +75,9 @@ var simpleNoteFactory = new NoteFactory();
 
 function renderTemplate (templateID) {
     // Remove current template //
-    let bodyNode = document.body.children[2];
-    if (bodyNode) { bodyNode.remove(); };
+    while (document.body.children[2]){
+        document.body.children[2].remove()
+    }
 
     // Render new template //
     let newTemplate = document.getElementById(templateID);
@@ -109,9 +110,6 @@ function homePage () {
             }
         })();
     }
-    // else {
-    //     noteList.style.display = "none";
-    // };
 
     /* Button Events */
     document.getElementById("new_note").addEventListener("click",function () { notePage() })
@@ -163,14 +161,14 @@ function notePage (noteName) {
 ////////////////////////
 
 function saveNote (noteName) {
-    let titleInput = document.getElementById("title");
+    let titleInput = document.getElementById("title").value;
     // Checks title validity //
-    if (titleInput.value) {
+    if (titleInput) {
         let availableTitle = true;
         // Checks title availability (for new notes) //
         if (!noteName) {
             for (let note in repositorium) {
-                if (note === titleInput.value) {
+                if (note === titleInput) {
                     availableTitle = false;
                 }
             };
@@ -184,6 +182,7 @@ function saveNote (noteName) {
                 // Store At Repositorium //
                 repositorium[noteTitle] = simpleNoteFactory.writeNote(noteTitle,noteContent);
                 repositorium.storeAtRepo(repositorium)
+                // if the title is modified //
                 if (noteTitle != noteName) {
                     // Delete Note with old name From Repositorium //
                     delete repositorium[noteName];
